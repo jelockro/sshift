@@ -1,0 +1,36 @@
+
+nodes: 
+  home:
+    name: # if not defined, will default to 'home' 
+    ip: 8.8.8.8
+    fqdn: 'www.google.com' # must be encapsulated in strings
+    users:
+      - root
+      - vagrant
+    passwords: # These must correspond to the users and must be in quotes
+      - 'rootpassword'
+      - 'vagrantpassword'
+  first-plane:
+    nodes: 
+      - default:
+          name: # if not defined wil default to an empty string
+          ip: 10.10.10.2
+          users:
+            - root
+          passwords:
+            - 'rootpassword'
+      - node:
+          name:
+          ip:
+          fqdn: # either ip or fqdn must be provided, if both provided ip will be used first
+  second-plane:
+    nodes:
+      - default:
+          name:
+          fqdn: 'www.google.com'
+          users:
+            - vagrant
+          passwords:
+            - 'vagrantpassword' 
+  third-plane:
+  # Supports up to 5 planes, but each plane needs at least one node
